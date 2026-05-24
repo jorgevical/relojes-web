@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Watches</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+:root{
+  --gold:#c7a66a;
+  --bg:#0d0d0d;
+  --card:#171717;
+  --text:#f5f5f5;
+  --gray:#999;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.4);
+}
+
+.logo{
+  font-size:1.1rem;
+  font-weight:bold;
+  letter-spacing:2px;
+  color:var(--gold);
+}
+
+.nav-btn{
+  background:var(--gold);
+  color:black;
+  padding:10px 18px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:0.9rem;
+  font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:40px 20px;
+  background:
+  linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1)),
+  url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1600&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-content{
+  animation:fadeUp 1s ease;
+}
+
+.hero h1{
+  font-size:3rem;
+  line-height:1;
+  margin-bottom:20px;
+}
+
+.hero p{
+  color:#ddd;
+  font-size:1rem;
+  margin-bottom:30px;
+  line-height:1.6;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+}
+
+.btn{
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:0.95rem;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:black;
+}
+
+.btn-dark{
+  border:1px solid #555;
+  color:white;
+}
+
+/* SECTION */
+
+section{
+  padding:70px 20px;
+}
+
+.section-title{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.section-sub{
+  color:var(--gray);
+  margin-bottom:40px;
+  line-height:1.6;
+}
+
+/* CARDS */
+
+.cards{
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:24px;
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:22px;
+}
+
+.card h3{
+  font-size:1.4rem;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#bbb;
+  line-height:1.6;
+}
+
+.price{
+  margin-top:20px;
+  color:var(--gold);
+  font-size:1.2rem;
+  font-weight:bold;
+}
+
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.feature{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px 18px;
+}
+
+.feature h4{
+  margin-top:15px;
+  margin-bottom:10px;
+}
+
+.feature p{
+  color:#999;
+  font-size:0.92rem;
+  line-height:1.5;
+}
+
+/* CONTACT */
+
+.contact{
+  background:linear-gradient(145deg,#171717,#101010);
+  border-radius:30px;
+  padding:30px 25px;
+}
+
+.contact h2{
+  margin-bottom:10px;
+}
+
+.contact p{
+  color:#aaa;
+  margin-bottom:30px;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+input, textarea{
+  background:#0f0f0f;
+  border:1px solid #2c2c2c;
+  border-radius:18px;
+  padding:18px;
+  color:white;
+  font-size:1rem;
+}
+
+textarea{
+  min-height:140px;
+  resize:none;
+}
+
+button{
+  background:var(--gold);
+  color:black;
+  border:none;
+  padding:18px;
+  border-radius:18px;
+  font-weight:bold;
+  font-size:1rem;
+}
+
+/* FOOTER */
+
+footer{
+  padding:40px 20px 100px;
+  text-align:center;
+  color:#666;
+  font-size:0.9rem;
+}
+
+/* BOTTOM MOBILE BAR */
+
+.mobile-bar{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  background:rgba(20,20,20,0.95);
+  border:1px solid #2b2b2b;
+  border-radius:30px;
+  padding:16px;
+  display:flex;
+  justify-content:space-around;
+  backdrop-filter:blur(10px);
+}
+
+.mobile-bar a{
+  color:white;
+  text-decoration:none;
+  font-size:0.85rem;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">ATELIER WATCHES</div>
+  <a href="#contacto" class="nav-btn">Contacto</a>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Relojes<br>hechos a mano</h1>
+
+    <p>
+      Diseños exclusivos creados artesanalmente
+      para personas que valoran la elegancia,
+      el detalle y el tiempo.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#coleccion" class="btn btn-gold">Colección</a>
+      <a href="#contacto" class="btn btn-dark">Hablar</a>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="coleccion">
+
+  <h2 class="section-title">Colección</h2>
+
+  <p class="section-sub">
+    Cada reloj está diseñado individualmente,
+    utilizando materiales premium y acabados únicos.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-content">
+        <h3>Ocean Black</h3>
+        <p>
+          Inspirado en la profundidad del océano.
+          Caja negra mate y correa de cuero premium.
+        </p>
+
+        <div class="price">890€</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-content">
+        <h3>Classic Gold</h3>
+        <p>
+          Diseño minimalista y elegante
+          pensado para uso diario.
+        </p>
+
+        <div class="price">740€</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <h2 class="section-title">Detalles</h2>
+
+  <p class="section-sub">
+    Calidad artesanal y atención al detalle en cada pieza.
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      ⌚
+      <h4>Diseño exclusivo</h4>
+      <p>Cada modelo es diferente y único.</p>
+    </div>
+
+    <div class="feature">
+      ⚙️
+      <h4>Mecanismo premium</h4>
+      <p>Alta precisión y larga duración.</p>
+    </div>
+
+    <div class="feature">
+      🪵
+      <h4>Materiales nobles</h4>
+      <p>Acero, cuero y acabados artesanales.</p>
+    </div>
+
+    <div class="feature">
+      🚚
+      <h4>Envíos seguros</h4>
+      <p>Entrega protegida y personalizada.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contacto">
+
+  <div class="contact">
+
+    <h2>Contacto</h2>
+
+    <p>
+      ¿Quieres un reloj personalizado o saber más?
+      Escríbeme directamente.
+    </p>
+
+    <form>
+
+      <input type="text" placeholder="Tu nombre">
+
+      <input type="email" placeholder="Tu correo">
+
+      <textarea placeholder="Cuéntame qué reloj buscas..."></textarea>
+
+      <button type="submit">
+        Enviar mensaje
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Atelier Watches
+</footer>
+
+<div class="mobile-bar">
+  <a href="#coleccion">Colección</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#">Instagram</a>
+</div>
+
+</body>
+</html>
