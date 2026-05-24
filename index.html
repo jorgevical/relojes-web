@@ -1,453 +1,523 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atelier Watches</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VICAL WATCHES</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root{
+      --black:#050505;
+      --dark:#0d0d0d;
+      --gold:#c4954f;
+      --soft:#d8d8d8;
+      --muted:#9a9a9a;
+    }
 
-<style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-:root{
-  --gold:#c7a66a;
-  --bg:#0d0d0d;
-  --card:#171717;
-  --text:#f5f5f5;
-  --gray:#999;
-}
+    html{
+      scroll-behavior:smooth;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  -webkit-tap-highlight-color: transparent;
-}
+    body{
+      background:var(--black);
+      color:white;
+      font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+    }
 
-body{
-  font-family: Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      padding:14px 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,.55);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(196,149,79,.18);
+    }
 
-/* NAV */
+    nav img{
+      height:34px;
+      object-fit:contain;
+    }
 
-nav{
-  position:fixed;
-  width:100%;
-  top:0;
-  left:0;
-  z-index:1000;
-  padding:18px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.4);
-}
+    nav a{
+      color:#000;
+      background:var(--gold);
+      padding:10px 16px;
+      border-radius:30px;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:bold;
+    }
 
-.logo{
-  font-size:1.1rem;
-  font-weight:bold;
-  letter-spacing:2px;
-  color:var(--gold);
-}
+    .hero{
+      min-height:100vh;
+      padding:100px 20px 40px;
+      display:flex;
+      flex-direction:column;
+      justify-content:end;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.96)),
+        url("img/hero.jpeg");
+      background-size:cover;
+      background-position:center;
+    }
 
-.nav-btn{
-  background:var(--gold);
-  color:black;
-  padding:10px 18px;
-  border-radius:30px;
-  text-decoration:none;
-  font-size:0.9rem;
-  font-weight:bold;
-}
+    .hero-logo{
+      width:260px;
+      max-width:90%;
+      margin-bottom:28px;
+    }
 
-/* HERO */
+    .hero h1{
+      font-size:3rem;
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:18px;
+      text-transform:uppercase;
+    }
 
-.hero{
-  height:100vh;
-  position:relative;
-  display:flex;
-  align-items:flex-end;
-  padding:40px 20px;
-  background:
-  linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1)),
-  url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1600&auto=format&fit=crop');
-  background-size:cover;
-  background-position:center;
-}
+    .hero p{
+      color:var(--soft);
+      line-height:1.6;
+      max-width:520px;
+      margin-bottom:28px;
+    }
 
-.hero-content{
-  animation:fadeUp 1s ease;
-}
+    .buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
 
-.hero h1{
-  font-size:3rem;
-  line-height:1;
-  margin-bottom:20px;
-}
+    .btn{
+      padding:15px 22px;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:.95rem;
+    }
 
-.hero p{
-  color:#ddd;
-  font-size:1rem;
-  margin-bottom:30px;
-  line-height:1.6;
-}
+    .btn.gold{
+      background:var(--gold);
+      color:#000;
+    }
 
-.hero-buttons{
-  display:flex;
-  gap:15px;
-}
+    .btn.outline{
+      border:1px solid rgba(255,255,255,.35);
+      color:white;
+    }
 
-.btn{
-  padding:14px 24px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:0.95rem;
-}
+    section{
+      padding:70px 18px;
+    }
 
-.btn-gold{
-  background:var(--gold);
-  color:black;
-}
+    .section-head{
+      margin-bottom:34px;
+    }
 
-.btn-dark{
-  border:1px solid #555;
-  color:white;
-}
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:.75rem;
+      margin-bottom:12px;
+      font-weight:bold;
+    }
 
-/* SECTION */
+    h2{
+      font-size:2.25rem;
+      line-height:1;
+      margin-bottom:14px;
+    }
 
-section{
-  padding:70px 20px;
-}
+    .section-head p{
+      color:var(--muted);
+      line-height:1.6;
+      max-width:680px;
+    }
 
-.section-title{
-  font-size:2rem;
-  margin-bottom:10px;
-}
+    .gallery{
+      display:grid;
+      gap:22px;
+    }
 
-.section-sub{
-  color:var(--gray);
-  margin-bottom:40px;
-  line-height:1.6;
-}
+    .card{
+      background:#111;
+      border:1px solid rgba(196,149,79,.16);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    }
 
-/* CARDS */
+    .card img{
+      width:100%;
+      height:430px;
+      object-fit:cover;
+      display:block;
+    }
 
-.cards{
-  display:flex;
-  flex-direction:column;
-  gap:25px;
-}
+    .card-content{
+      padding:22px;
+    }
 
-.card{
-  background:var(--card);
-  border-radius:24px;
-  overflow:hidden;
-  transition:0.3s;
-}
+    .card-content h3{
+      color:white;
+      font-size:1.35rem;
+      margin-bottom:8px;
+    }
 
-.card:hover{
-  transform:translateY(-5px);
-}
+    .card-content p{
+      color:var(--muted);
+      line-height:1.55;
+    }
 
-.card img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-}
+    .steps{
+      display:grid;
+      gap:14px;
+    }
 
-.card-content{
-  padding:22px;
-}
+    .step{
+      background:linear-gradient(145deg,#141414,#080808);
+      border:1px solid rgba(196,149,79,.2);
+      border-radius:22px;
+      padding:22px;
+    }
 
-.card h3{
-  font-size:1.4rem;
-  margin-bottom:10px;
-}
+    .step span{
+      color:var(--gold);
+      font-weight:bold;
+      font-size:.85rem;
+    }
 
-.card p{
-  color:#bbb;
-  line-height:1.6;
-}
+    .step h3{
+      margin:10px 0;
+    }
 
-.price{
-  margin-top:20px;
-  color:var(--gold);
-  font-size:1.2rem;
-  font-weight:bold;
-}
+    .step p{
+      color:var(--muted);
+      line-height:1.5;
+    }
 
-/* FEATURES */
+    .wide-image{
+      width:100%;
+      border-radius:28px;
+      border:1px solid rgba(196,149,79,.22);
+      box-shadow:0 20px 70px rgba(0,0,0,.55);
+      margin-top:26px;
+    }
 
-.features{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
+    .info-grid{
+      display:grid;
+      gap:22px;
+    }
 
-.feature{
-  background:var(--card);
-  border-radius:20px;
-  padding:25px 18px;
-}
+    .info-card{
+      background:#0f0f0f;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid rgba(196,149,79,.18);
+    }
 
-.feature h4{
-  margin-top:15px;
-  margin-bottom:10px;
-}
+    .info-card img{
+      width:100%;
+      display:block;
+    }
 
-.feature p{
-  color:#999;
-  font-size:0.92rem;
-  line-height:1.5;
-}
+    .contact{
+      background:
+        radial-gradient(circle at top, rgba(196,149,79,.16), transparent 35%),
+        #080808;
+      border:1px solid rgba(196,149,79,.25);
+      border-radius:34px;
+      padding:34px 24px;
+      text-align:center;
+    }
 
-/* CONTACT */
+    .contact img{
+      width:240px;
+      max-width:90%;
+      margin-bottom:24px;
+    }
 
-.contact{
-  background:linear-gradient(145deg,#171717,#101010);
-  border-radius:30px;
-  padding:30px 25px;
-}
+    .contact p{
+      color:var(--muted);
+      line-height:1.6;
+      margin-bottom:26px;
+    }
 
-.contact h2{
-  margin-bottom:10px;
-}
+    .floating{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:999;
+      background:var(--gold);
+      color:#000;
+      padding:15px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 10px 30px rgba(0,0,0,.55);
+    }
 
-.contact p{
-  color:#aaa;
-  margin-bottom:30px;
-}
+    footer{
+      text-align:center;
+      color:#777;
+      padding:38px 20px 90px;
+      font-size:.85rem;
+    }
 
-form{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
+    @media(min-width:800px){
+      nav{
+        padding:16px 60px;
+      }
 
-input, textarea{
-  background:#0f0f0f;
-  border:1px solid #2c2c2c;
-  border-radius:18px;
-  padding:18px;
-  color:white;
-  font-size:1rem;
-}
+      nav img{
+        height:42px;
+      }
 
-textarea{
-  min-height:140px;
-  resize:none;
-}
+      .hero{
+        padding:120px 70px 70px;
+      }
 
-button{
-  background:var(--gold);
-  color:black;
-  border:none;
-  padding:18px;
-  border-radius:18px;
-  font-weight:bold;
-  font-size:1rem;
-}
+      .hero h1{
+        font-size:5rem;
+      }
 
-/* FOOTER */
+      section{
+        padding:100px 70px;
+      }
 
-footer{
-  padding:40px 20px 100px;
-  text-align:center;
-  color:#666;
-  font-size:0.9rem;
-}
+      .gallery{
+        grid-template-columns:repeat(3,1fr);
+      }
 
-/* BOTTOM MOBILE BAR */
+      .steps{
+        grid-template-columns:repeat(4,1fr);
+      }
 
-.mobile-bar{
-  position:fixed;
-  bottom:15px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90%;
-  background:rgba(20,20,20,0.95);
-  border:1px solid #2b2b2b;
-  border-radius:30px;
-  padding:16px;
-  display:flex;
-  justify-content:space-around;
-  backdrop-filter:blur(10px);
-}
-
-.mobile-bar a{
-  color:white;
-  text-decoration:none;
-  font-size:0.85rem;
-}
-
-/* ANIMATIONS */
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-</style>
+      .info-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo">ATELIER WATCHES</div>
-  <a href="#contacto" class="nav-btn">Contacto</a>
+  <img src="img/logo.jpeg" alt="VICAL WATCHES">
+  <a href="#contacto">Pedir reloj</a>
 </nav>
 
-<section class="hero">
+<header class="hero">
+  <img class="hero-logo" src="img/logo.jpeg" alt="VICAL WATCHES">
 
-  <div class="hero-content">
+  <h1>Relojes<br>personalizados</h1>
 
-    <h1>Relojes<br>hechos a mano</h1>
-
-    <p>
-      Diseños exclusivos creados artesanalmente
-      para personas que valoran la elegancia,
-      el detalle y el tiempo.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#coleccion" class="btn btn-gold">Colección</a>
-      <a href="#contacto" class="btn btn-dark">Hablar</a>
-    </div>
-
-  </div>
-
-</section>
-
-<section id="coleccion">
-
-  <h2 class="section-title">Colección</h2>
-
-  <p class="section-sub">
-    Cada reloj está diseñado individualmente,
-    utilizando materiales premium y acabados únicos.
+  <p>
+    Ensamblados con pasión. Hechos para durar.
+    Diseñamos y montamos relojes únicos a medida,
+    cuidando cada componente, acabado y detalle.
   </p>
 
-  <div class="cards">
+  <div class="buttons">
+    <a class="btn gold" href="#catalogo">Ver trabajos</a>
+    <a class="btn outline" href="#pedido">Cómo pedir</a>
+  </div>
+</header>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1200&auto=format&fit=crop">
-      <div class="card-content">
-        <h3>Ocean Black</h3>
-        <p>
-          Inspirado en la profundidad del océano.
-          Caja negra mate y correa de cuero premium.
-        </p>
-
-        <div class="price">890€</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=1200&auto=format&fit=crop">
-      <div class="card-content">
-        <h3>Classic Gold</h3>
-        <p>
-          Diseño minimalista y elegante
-          pensado para uso diario.
-        </p>
-
-        <div class="price">740€</div>
-      </div>
-    </div>
-
+<section id="catalogo">
+  <div class="section-head">
+    <div class="eyebrow">Catálogo</div>
+    <h2>Trabajos realizados</h2>
+    <p>
+      Cada pieza se configura de forma individual:
+      caja, esfera, agujas, bisel, correa y detalles finales.
+    </p>
   </div>
 
+  <div class="gallery">
+    <div class="card">
+      <img src="img/reloj1.jpeg" alt="Reloj personalizado Vical Watches">
+      <div class="card-content">
+        <h3>Presage Green</h3>
+        <p>Elegancia clásica con esfera texturizada, detalles dorados y correa de piel.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/reloj2.jpeg" alt="Reloj personalizado Vical Watches">
+      <div class="card-content">
+        <h3>Black Steel</h3>
+        <p>Diseño sobrio sobre brazalete metálico y acabado premium.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/reloj5.jpeg" alt="Reloj personalizado Vical Watches">
+      <div class="card-content">
+        <h3>Diver Blue</h3>
+        <p>Estética deportiva, bisel azul y presencia robusta.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/reloj6.jpeg" alt="Reloj personalizado Vical Watches">
+      <div class="card-content">
+        <h3>Open Heart</h3>
+        <p>Movimiento visible, caja integrada y diseño contemporáneo.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/reloj7.jpeg" alt="Reloj personalizado Vical Watches">
+      <div class="card-content">
+        <h3>Diver Workshop</h3>
+        <p>Pieza ensamblada y ajustada en taller con control final de calidad.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/reloj8.jpeg" alt="Reloj personalizado Vical Watches">
+      <div class="card-content">
+        <h3>Blue Diver Pro</h3>
+        <p>Reloj automático personalizado con presencia profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pedido">
+  <div class="section-head">
+    <div class="eyebrow">Proceso</div>
+    <h2>Cómo hacer tu pedido</h2>
+    <p>
+      Te acompañamos durante todo el proceso para crear una pieza única,
+      ajustada a tu estilo y preferencias.
+    </p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <span>01</span>
+      <h3>Contacto</h3>
+      <p>Escríbenos por Instagram o WhatsApp y cuéntanos tu idea.</p>
+    </div>
+
+    <div class="step">
+      <span>02</span>
+      <h3>Configuración</h3>
+      <p>Elegimos caja, dial, agujas, bisel, correa y logo.</p>
+    </div>
+
+    <div class="step">
+      <span>03</span>
+      <h3>Ensamblaje</h3>
+      <p>Montaje artesanal con precisión, cuidado y revisión completa.</p>
+    </div>
+
+    <div class="step">
+      <span>04</span>
+      <h3>Entrega</h3>
+      <p>Envíos a España y entrega en mano disponible en Salamanca.</p>
+    </div>
+  </div>
+
+  <img class="wide-image" src="img/pedido.jpeg" alt="Cómo hacer tu pedido en Vical Watches">
 </section>
 
 <section>
-
-  <h2 class="section-title">Detalles</h2>
-
-  <p class="section-sub">
-    Calidad artesanal y atención al detalle en cada pieza.
-  </p>
-
-  <div class="features">
-
-    <div class="feature">
-      ⌚
-      <h4>Diseño exclusivo</h4>
-      <p>Cada modelo es diferente y único.</p>
-    </div>
-
-    <div class="feature">
-      ⚙️
-      <h4>Mecanismo premium</h4>
-      <p>Alta precisión y larga duración.</p>
-    </div>
-
-    <div class="feature">
-      🪵
-      <h4>Materiales nobles</h4>
-      <p>Acero, cuero y acabados artesanales.</p>
-    </div>
-
-    <div class="feature">
-      🚚
-      <h4>Envíos seguros</h4>
-      <p>Entrega protegida y personalizada.</p>
-    </div>
-
+  <div class="section-head">
+    <div class="eyebrow">Componentes</div>
+    <h2>Materiales con propósito</h2>
+    <p>
+      Seleccionamos componentes fiables, resistentes y pensados
+      para ofrecer una experiencia duradera.
+    </p>
   </div>
 
+  <div class="info-grid">
+    <div class="info-card">
+      <img src="img/movimientos.jpeg" alt="Movimientos Seiko NH">
+    </div>
+
+    <div class="info-card">
+      <img src="img/acero.jpeg" alt="Cajas de acero 316L">
+    </div>
+
+    <div class="info-card">
+      <img src="img/zafiro.jpeg" alt="Cristal de zafiro">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="eyebrow">Taller</div>
+    <h2>Ensamblaje artesanal</h2>
+    <p>
+      Cada reloj se monta, revisa y ajusta manualmente.
+      No fabricamos piezas en serie: construimos relojes con carácter.
+    </p>
+  </div>
+
+  <div class="gallery">
+    <div class="card">
+      <img src="img/reloj3.jpeg" alt="Proceso artesanal Vical Watches">
+    </div>
+
+    <div class="card">
+      <img src="img/reloj4.jpeg" alt="Reloj Vical Watches en uso">
+    </div>
+
+    <div class="card">
+      <img src="img/reloj8.jpeg" alt="Reloj terminado Vical Watches">
+    </div>
+  </div>
 </section>
 
 <section id="contacto">
-
   <div class="contact">
+    <img src="img/logo.jpeg" alt="VICAL WATCHES">
 
-    <h2>Contacto</h2>
+    <h2>Diseña tu próximo reloj</h2>
 
     <p>
-      ¿Quieres un reloj personalizado o saber más?
-      Escríbeme directamente.
+      Escríbenos y empezamos a configurar tu pieza:
+      estilo, materiales, presupuesto y plazo aproximado.
     </p>
 
-    <form>
+    <div class="buttons" style="justify-content:center;">
+      <a class="btn gold" href="https://www.instagram.com/vicalwatches" target="_blank">
+        Instagram
+      </a>
 
-      <input type="text" placeholder="Tu nombre">
-
-      <input type="email" placeholder="Tu correo">
-
-      <textarea placeholder="Cuéntame qué reloj buscas..."></textarea>
-
-      <button type="submit">
-        Enviar mensaje
-      </button>
-
-    </form>
-
+      <a class="btn outline" href="https://wa.me/34600000000" target="_blank">
+        WhatsApp
+      </a>
+    </div>
   </div>
-
 </section>
 
-<footer>
-  © 2026 Atelier Watches
-</footer>
+<a class="floating" href="https://www.instagram.com/vicalwatches" target="_blank">
+  Instagram
+</a>
 
-<div class="mobile-bar">
-  <a href="#coleccion">Colección</a>
-  <a href="#contacto">Contacto</a>
-  <a href="#">Instagram</a>
-</div>
+<footer>
+  © 2026 VICAL WATCHES · Ensamblados con pasión. Hechos para durar.
+</footer>
 
 </body>
 </html>
